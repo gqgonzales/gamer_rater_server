@@ -1,0 +1,22 @@
+[
+  {
+    "model": "gamer_rater_api.GameReview",
+    "pk": 1,
+    "fields": {
+      "game_id": 1,
+      "player_id": 1,
+      "title": "This game doesn't SUNK!",
+      "review": "Absolutely delightful way to kill a quarter-hour. Once you get your first hit, you're off to the races!"
+    }
+  },
+  {
+    "model": "gamer_rater_api.GameReview",
+    "pk": 2,
+    "fields": {
+      "game_id": 2,
+      "player_id": 1,
+      "title": "OPEN YOUR EYES! This game rocks!",
+      "review": "Fun game involving a lot of deception. Can you lie to your friends? How strong is your intuition? Play Minions to find out!"
+    }
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "model": "gamer_rater_api.game",
+    "pk": 1,
+    "fields": {
+      "title": "Battleship",
+      "description": "Sink your opponite before they sink you!",
+      "designer": "Milton Bradley",
+      "year_released": 1967,
+      "number_of_players": 2,
+      "duration": "15 minutes",
+      "age_rec": 6
+    }
+  },
+  {
+    "model": "gamer_rater_api.game",
+    "pk": 2,
+    "fields": {
+      "title": "Minions of Mordak",
+      "description": "CLOSE YOUR HAND INTO A FIST",
+      "designer": "IDK",
+      "year_released": 2015,
+      "number_of_players": 6,
+      "duration": "30 minutes",
+      "age_rec": 12
+    }
+  }
+]

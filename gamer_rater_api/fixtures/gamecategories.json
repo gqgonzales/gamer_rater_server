@@ -1,0 +1,18 @@
+[
+  {
+    "model": "gamer_rater_api.GameCategory",
+    "pk": 1,
+    "fields": {
+      "game_id": 1,
+      "category_id": 10
+    }
+  },
+  {
+    "model": "gamer_rater_api.GameCategory",
+    "pk": 2,
+    "fields": {
+      "game_id": 2,
+      "category_id": 3
+    }
+  }
+]

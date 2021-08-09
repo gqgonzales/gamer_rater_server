@@ -1,0 +1,20 @@
+[
+  {
+    "model": "gamer_rater_api.GameRating",
+    "pk": 1,
+    "fields": {
+      "game_id": 1,
+      "player_id": 1,
+      "rating": 3
+    }
+  },
+  {
+    "model": "gamer_rater_api.GameRating",
+    "pk": 2,
+    "fields": {
+      "game_id": 2,
+      "player_id": 1,
+      "rating": 4
+    }
+  }
+]
