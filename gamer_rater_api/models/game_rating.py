@@ -4,5 +4,5 @@ from django.db.models.deletion import CASCADE
 
 class GameRating(models.Model):
     game = models.ForeignKey("Game", on_delete=CASCADE)
-    rating = models.IntegerField()
     player = models.ForeignKey("Player", on_delete=CASCADE)
+    rating = models.IntegerField()

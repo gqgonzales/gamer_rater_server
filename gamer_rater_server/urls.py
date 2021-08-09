@@ -23,6 +23,7 @@ from rest_framework import routers
 router = routers.DefaultRouter(trailing_slash=False)
 
 
+
 urlpatterns = [
     path('', include(router.urls)),
     # Requests to http://localhost:8000/register will be routed to the register_user function
