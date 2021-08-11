@@ -10,4 +10,4 @@ class GameReview(models.Model):
     review = models.TextField()
 
     def __str__(self):
-        return self.title
+        return f'{self.title}, a review'
