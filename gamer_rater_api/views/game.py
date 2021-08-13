@@ -36,7 +36,8 @@ class GameView(ViewSet):
         # Use the Django ORM to get the record from the database
         # whose `id` is what the client passed as the
         # `category_id` in the body of the request.
-        # categories = Category.objects.get(pk=request.data["category_id"])
+
+        # categories = Category.objects.get(pk=request.data["categories"])
         # game.categories = categories
 
         # Try to save the new game to the database, then
@@ -94,13 +95,17 @@ class GameView(ViewSet):
         game.age_rec = request.data["age_rec"]
         # game.player = player
 
-        categories = Category.objects.get(pk=request.data["category_id"])
-        game.categories = categories
-        game.save()
+        # Direct assignment to the forward side of a many-to-many set is prohibited.
+        # Use categories.set() instead.
+        # categories = Category.objects.get(pk=request.data["categories"])
+        # game.categories = categories
 
-        # 204 status code means everything worked but the
-        # server is not sending back any data in the response
-        return Response({}, status=status.HTTP_204_NO_CONTENT)
+        try:
+            game.save()
+            game.categories.set(request.data["categories"])
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
     def destroy(self, request, pk=None):
         """Handle DELETE requests for a single game
