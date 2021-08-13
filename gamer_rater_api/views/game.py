@@ -1,10 +1,12 @@
 """View module for handling requests about games"""
 from django.core.exceptions import ValidationError
+from django.db.models import fields
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from gamer_rater_api.models import Game, GameCategory, Player, Category
+from django.contrib.auth.models import User
 
 
 class GameView(ViewSet):
@@ -150,14 +152,35 @@ class GameView(ViewSet):
 # The serializer class determines how the Python data should be serialized as JSON to be sent back to the client.
 
 
+class UserSerializer(serializers.ModelSerializer):
+    """JSON serializer for default user model"""
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+
+class PlayerSerializer(serializers.ModelSerializer):
+    """JSON serializer for Players"""
+    user = UserSerializer(many=False)
+
+    class Meta:
+        model = Player
+        fields = ['user']
+
+
 class GameSerializer(serializers.ModelSerializer):
     """JSON serializer for games
 
     Arguments:
         serializer type
     """
+    # player = PlayerSerializer(many=False)
+
     class Meta:
         model = Game
-        fields = '__all__'
+        fields = ('id', 'title', 'description', 'designer',
+                  'year_released', 'number_of_players', 'duration', 'age_rec', 'categories', 'average_rating')
+        # fields = ('__all__', 'average_rating')
+
         depth = 1
         #  Works like EXPAND from JSON Server, exposing a certain number of fields
