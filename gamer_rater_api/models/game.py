@@ -14,6 +14,7 @@ class Game(models.Model):
     number_of_players = models.IntegerField()
     duration = models.CharField(max_length=50)
     age_rec = models.IntegerField()
+    player = models.ForeignKey("Player", on_delete=models.CASCADE)
     categories = models.ManyToManyField("Category", through="GameCategory")
 
     def __str__(self):

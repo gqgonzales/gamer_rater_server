@@ -82,7 +82,6 @@ class GameView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
-        # player = Player.objects.get(user=request.auth.user)
 
         # Do mostly the same thing as POST, but instead of
         # creating a new instance of Game, get the game record
@@ -95,7 +94,8 @@ class GameView(ViewSet):
         game.year_released = request.data["year_released"]
         game.duration = request.data["duration"]
         game.age_rec = request.data["age_rec"]
-        # game.player = player
+        player = Player.objects.get(user=request.auth.user)
+        game.player = player
 
         # Direct assignment to the forward side of a many-to-many set is prohibited.
         # Use categories.set() instead.
@@ -179,7 +179,7 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = ('id', 'title', 'description', 'designer',
-                  'year_released', 'number_of_players', 'duration', 'age_rec', 'categories', 'average_rating')
+                  'year_released', 'number_of_players', 'duration', 'age_rec', 'categories', 'player', 'average_rating')
         # fields = ('__all__', 'average_rating')
 
         depth = 1
